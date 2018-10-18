@@ -10,8 +10,12 @@
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-  if ([@"getPlatformVersion" isEqualToString:call.method]) {
-    result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
+  if ([@"initSDK" isEqualToString:call.method]) {
+    result([[NSNumber alloc] initWithBool:true]);
+  } else if([@"login" isEqualToString:call.method]) {
+    result([[NSNumber alloc] initWithBool:true]);
+  } else if([@"logout" isEqualToString:call.method]) {
+    result([[NSNumber alloc] initWithBool:true]);
   } else {
     result(FlutterMethodNotImplemented);
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
+import 'package:zg_audio_plugin/room_message.dart';
 import 'package:zg_audio_plugin/zg_audio_plugin.dart';
 
 void main() => runApp(MyApp());
@@ -11,33 +12,16 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+class _MyAppState extends State<MyApp> with ILoginCallback,IRoomCallback {
+  ZgAudioPlugin zgAudioPlugin;
+  StringBuffer textBuffer;
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformVersion = await ZgAudioPlugin.platformVersion;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
+    zgAudioPlugin = ZgAudioPlugin();
+    zgAudioPlugin.roomCallback = this;
+    textBuffer = new StringBuffer();
   }
 
   @override
@@ -47,10 +31,96 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: ListView(
+          children: <Widget>[
+            RaisedButton(
+              onPressed: () {
+                zgAudioPlugin.initSDK("1001", "用户1001");
+              },
+              child: new Text("初始化版本"),
+            ),
+            RaisedButton(
+              onPressed: () {
+                zgAudioPlugin.login("10", "房间10", this);
+              },
+              child: new Text("登录"),
+            ),
+            RaisedButton(
+              onPressed: () {
+                zgAudioPlugin.logout();
+              },
+              child: new Text("注销"),
+            ),
+            RaisedButton(
+              onPressed: () {
+
+              },
+              child: new Text("登录房间"),
+            ),
+            RaisedButton(
+              onPressed: () {
+              },
+              child: new Text(""),
+            ),
+            new Text(textBuffer.toString())
+          ],
         ),
       ),
     );
+  }
+
+  @override
+  onAddUser(String userId, String userName, bool enableMic) {
+    textBuffer.write(
+        "onAddUser userId($userId) userName($userName) enableMic($enableMic)\n");
+    this.setState((){});
+  }
+
+  @override
+  onDisconnect() {
+    textBuffer.write("onDisconnect\n");
+    this.setState((){});
+  }
+
+  @override
+  onLoginFailure() {
+    textBuffer.write("onLoginFailure\n");
+    this.setState((){});
+  }
+
+  @override
+  onLoginSuc() {
+    textBuffer.write("onLoginSuc\n");
+    this.setState((){});
+  }
+
+  @override
+  onRemoveUser(String userId) {
+    textBuffer.write("onRemoveUser userId($userId)\n");
+    this.setState((){});
+  }
+
+  @override
+  onUpdateUser(String userId, bool enableMic) {
+    textBuffer.write("onUpdateUser userId($userId) enableMic($enableMic)");
+    this.setState((){});
+  }
+
+  @override
+  void onRecvMessage(List<RoomMessage> roomMessages) {
+    textBuffer.write("onRecvMessage len(${roomMessages.length}) ");
+    this.setState((){});
+  }
+
+  @override
+  void onSendMessageError(int errorCode, String roomId, String sessionId) {
+    textBuffer.write("onSendMessageError errorCode($errorCode) roomId($roomId) sessionId($sessionId)");
+    this.setState((){});
+  }
+
+  @override
+  void onSendMessageSuc(String roomId, String sessionId) {
+    textBuffer.write("onSendMessageSuc roomId($roomId) sessionId($sessionId)");
+    this.setState((){});
   }
 }

@@ -41,16 +41,16 @@ class ZgAudioPlugin {
         }
         break;
       case "onAddUser":
-        if (_loginCallback != null) {
+        if (roomCallback != null) {
           var resultData = jsonResult["resultData"];
-          _loginCallback.onAddUser(resultData["userId"], resultData["userName"],
+          roomCallback.onAddUser(resultData["userId"], resultData["userName"],
               resultData["enableMic"]);
         }
         break;
       case "onRemoveUser":
-        if (_loginCallback != null) {
+        if (roomCallback != null) {
           var resultData = jsonResult["resultData"];
-          _loginCallback.onRemoveUser(resultData["userId"]);
+          roomCallback.onRemoveUser(resultData["userId"]);
         }
         break;
       case "onDisconnect":
@@ -59,11 +59,11 @@ class ZgAudioPlugin {
         }
         break;
       case "onUpdateUser":
-        if (_loginCallback != null) {
+        if (roomCallback != null) {
           var resultData = jsonResult["resultData"];
           String userId = resultData["userId"];
           bool enableMic = resultData["enableMic"];
-          _loginCallback.onUpdateUser(userId, enableMic);
+          roomCallback.onUpdateUser(userId, enableMic);
         }
         break;
     }
@@ -144,18 +144,18 @@ abstract class ILoginCallback {
   onLoginSuc();
 
   onLoginFailure();
+}
+
+abstract class IRoomCallback {
+  onSendMessageError(int errorCode, String roomId, String sessionId);
+
+  onSendMessageSuc(String roomId, String sessionId);
+
+  onRecvMessage(List<RoomMessage> roomMessages);
 
   onAddUser(String userId, String userName, bool enableMic);
 
   onRemoveUser(String userId);
 
   onUpdateUser(String userId, bool enableMic);
-}
-
-abstract class IRoomCallback {
-  void onSendMessageError(int errorCode, String roomId, String sessionId);
-
-  void onSendMessageSuc(String roomId, String sessionId);
-
-  void onRecvMessage(List<RoomMessage> roomMessages);
 }

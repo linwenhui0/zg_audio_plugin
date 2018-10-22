@@ -86,7 +86,7 @@ class ZgAudioPlugin : MethodCallHandler {
             SEND_MESSAGE -> {
                 val messageType: Int? = call.argument("messageType")
                 val messageCategory: Int? = call.argument("messageCategory")
-                val content: Int? = call.argument("content")
+                val content: String? = call.argument("content")
                 Logger.getInstance().defaultTagD("发送消息 ", messageType, " , ", messageCategory, " , ", content)
                 zegoVoiceAccessor.sendRoomMessage(messageType!!, messageCategory!!, content as String)
             }

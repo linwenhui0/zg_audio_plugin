@@ -15,4 +15,9 @@ class RoomMessage {
       this.messageType,
       this.messageCategory,
       this.messagePriority});
+
+  @override
+  String toString() {
+    return "fromUserID($fromUserID) fromUserName($fromUserName) messageID($messageID) content($content) messageType($messageType) messageCategory($messageCategory) messagePriority($messagePriority)";
+  }
 }

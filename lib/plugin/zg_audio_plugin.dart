@@ -273,6 +273,16 @@ class ZgAudioPlugin {
     return await _channel
         .invokeMethod(Constants.OPEN_MIC, {Constants.OPEN_MIC: enable});
   }
+
+  initRoomListener() async {
+    await _channel.invokeMethod(Constants.INIT_ROOM_LISTENER);
+  }
+
+  destroyRoomListener() async{
+    await _channel.invokeMethod(Constants.DESTROY_ROOM_LISTENER);
+  }
+
+
 }
 
 abstract class ILoginCallback {

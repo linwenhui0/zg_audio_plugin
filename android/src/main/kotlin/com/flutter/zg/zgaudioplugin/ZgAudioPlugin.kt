@@ -3,6 +3,8 @@ package com.flutter.zg.zgaudioplugin
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.LOGIN_CHANNEL
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_MEMBER_CHANNEL
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_MESSAGE_CHANNEL
+import com.flutter.zg.contants.Constants.Companion.Method.Companion.DESTROY_ROOM_LISTENER
+import com.flutter.zg.contants.Constants.Companion.Method.Companion.INIT_ROOM_LISTENER
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.INIT_SDK
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.LOGIN
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.LOGOUT
@@ -116,6 +118,14 @@ class ZgAudioPlugin : MethodCallHandler {
             OPEN_MIC -> {
                 val mic: Boolean? = call.argument(OPEN_MIC)
                 voiceAccessor.openMic(mic!!)
+            }
+            INIT_ROOM_LISTENER->{
+                voiceAccessor.registerRoomCallbacks(roomHandler)
+                voiceAccessor.registerRoomMessageCallback(roomStreamHandler)
+            }
+            DESTROY_ROOM_LISTENER->{
+                voiceAccessor.unRegisterRoomCallbacks(roomHandler)
+                voiceAccessor.unRegisterRoomMessageCallbacks(roomStreamHandler)
             }
             else -> result.notImplemented()
         }

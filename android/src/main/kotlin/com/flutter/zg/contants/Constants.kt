@@ -14,6 +14,8 @@ class Constants {
                 const val SEND_MESSAGE = "sendMessage"//房间内发送消息
                 const val OPEN_SPEAKER = "openSpeaker"//打开扬声器
                 const val OPEN_MIC = "openMic"//打开麦克风
+                const val INIT_ROOM_LISTENER = "initRoomListener"//初始化房间回调
+                const val DESTROY_ROOM_LISTENER = "destroyRoomListener"//回收房间回调
 
 
                 const val USER_ID = "userId"//用户id

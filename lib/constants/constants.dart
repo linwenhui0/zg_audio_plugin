@@ -7,6 +7,8 @@ class Constants {
   static const String SEND_MESSAGE = "sendMessage"; //房间内发送消息
   static const String OPEN_SPEAKER = "openSpeaker"; //打开扬声器
   static const String OPEN_MIC = "openMic"; //打开麦克风
+  static const String INIT_ROOM_LISTENER = "initRoomListener";//初始化房间回调
+  static const String DESTROY_ROOM_LISTENER = "destroyRoomListener";//回收房间回调
 
   static const String LOGIN_STATUS_CHANNEL = "loginStatusChannel"; //用户在线渠道
   static const String LOGIN_SUC = "onLoginSuc"; //登录成功

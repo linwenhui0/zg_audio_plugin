@@ -76,6 +76,7 @@ class ZgAudioPlugin : MethodCallHandler {
         loginEventHandler = LoginStreamHandler()
         roomStreamHandler = RoomStreamHandler()
         roomHandler = RoomHandler()
+        Logger.getInstance().defaultTagD("生成即构插件")
     }
 
 
@@ -133,7 +134,6 @@ class ZgAudioPlugin : MethodCallHandler {
                 voiceAccessor.unRegisterRoomCallbacks(roomHandler)
                 voiceAccessor.unRegisterStreamCallback(roomHandler)
                 voiceAccessor.unRegisterSoundLevelCallback(roomHandler)
-                voiceAccessor.setPullerCallback(null)
                 voiceAccessor.unRegisterRoomMessageCallbacks(roomStreamHandler)
             }
             else -> result.notImplemented()

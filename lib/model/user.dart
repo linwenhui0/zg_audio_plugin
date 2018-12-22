@@ -16,6 +16,13 @@ class User {
       this.lock,
       this.micLocation});
 
+  void clearData() {
+    userId = null;
+    userName = null;
+    streamId = null;
+    micLocation = 0;
+  }
+
   @override
   String toString() {
     return "userId($userId) userName($userName) mic($mic) streamId($streamId) speaker($speaker) lock($lock) micLocation($micLocation)";

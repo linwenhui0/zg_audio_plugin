@@ -5,6 +5,7 @@ class User {
   String streamId;
   bool speaker;
   int micLocation;
+  bool lock;
 
   User(
       {this.userId,
@@ -12,10 +13,11 @@ class User {
       this.mic,
       this.streamId,
       this.speaker,
+      this.lock,
       this.micLocation});
 
   @override
   String toString() {
-    return "userId($userId) userName($userName) mic($mic) streamId($streamId) speaker($speaker) micLocation($micLocation)";
+    return "userId($userId) userName($userName) mic($mic) streamId($streamId) speaker($speaker) lock($lock) micLocation($micLocation)";
   }
 }

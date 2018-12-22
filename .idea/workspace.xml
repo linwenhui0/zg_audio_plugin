@@ -23,6 +23,7 @@
   <component name="ChangeListManager">
     <list default="true" id="627de969-77f4-4419-9ddc-cd8af3c5c7e6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/flutter/zg/zgaudioplugin/ZgAudioPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/flutter/zg/zgaudioplugin/ZgAudioPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/flutter/zg/zgaudioplugin/channel/RoomHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/flutter/zg/zgaudioplugin/channel/RoomHandler.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -64,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/android/src/main/kotlin/com/flutter/zg/zgaudioplugin/ZgAudioPlugin.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1380">
-              <caret line="124" column="64" selection-start-line="124" selection-start-column="64" selection-end-line="124" selection-end-column="64" />
+              <caret line="125" column="64" selection-start-line="125" selection-start-column="64" selection-end-line="125" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -344,7 +345,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="205" y="23" width="1280" height="709" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />
       <window_info id="Build Variants" order="1" side_tool="true" />
@@ -707,7 +707,7 @@
     <entry file="file://$PROJECT_DIR$/android/src/main/kotlin/com/flutter/zg/zgaudioplugin/ZgAudioPlugin.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1380">
-          <caret line="124" column="64" selection-start-line="124" selection-start-column="64" selection-end-line="124" selection-end-column="64" />
+          <caret line="125" column="64" selection-start-line="125" selection-start-column="64" selection-end-line="125" selection-end-column="64" />
         </state>
       </provider>
     </entry>

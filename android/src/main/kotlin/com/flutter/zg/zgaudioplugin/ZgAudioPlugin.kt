@@ -87,6 +87,7 @@ class ZgAudioPlugin : MethodCallHandler {
                 val userName: String? = call.argument(USER_NAME)
                 Logger.getInstance().defaultTagD(" 初始化即构sdk , userId = ", userId, " , userName = ", userName)
                 voiceAccessor.initSDK(userId, userName)
+                voiceAccessor.setPullerCallback(roomHandler)
                 result.success(true)
             }
             LOGIN -> {
@@ -121,7 +122,7 @@ class ZgAudioPlugin : MethodCallHandler {
             }
             INIT_ROOM_LISTENER->{
                 Logger.getInstance().defaultTagD("$INIT_ROOM_LISTENER")
-                voiceAccessor.setPullerCallback(roomHandler)
+
                 voiceAccessor.registerRoomCallbacks(roomHandler)
                 voiceAccessor.registerStreamCallback(roomHandler)
                 voiceAccessor.registerSoundLevelCallback(roomHandler)

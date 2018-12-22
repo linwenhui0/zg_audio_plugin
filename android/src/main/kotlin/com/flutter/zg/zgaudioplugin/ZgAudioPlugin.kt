@@ -120,13 +120,15 @@ class ZgAudioPlugin : MethodCallHandler {
                 voiceAccessor.openMic(mic!!)
             }
             INIT_ROOM_LISTENER->{
+                Logger.getInstance().defaultTagD("$INIT_ROOM_LISTENER")
+                voiceAccessor.setPullerCallback(roomHandler)
                 voiceAccessor.registerRoomCallbacks(roomHandler)
                 voiceAccessor.registerStreamCallback(roomHandler)
                 voiceAccessor.registerSoundLevelCallback(roomHandler)
-                voiceAccessor.setPullerCallback(roomHandler)
                 voiceAccessor.registerRoomMessageCallback(roomStreamHandler)
             }
             DESTROY_ROOM_LISTENER->{
+                Logger.getInstance().defaultTagD("$DESTROY_ROOM_LISTENER")
                 voiceAccessor.unRegisterRoomCallbacks(roomHandler)
                 voiceAccessor.unRegisterStreamCallback(roomHandler)
                 voiceAccessor.unRegisterSoundLevelCallback(roomHandler)

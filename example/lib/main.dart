@@ -151,7 +151,7 @@ class _MyAppState extends State<MyApp>
   }
 
   @override
-  void onSoundLevel(String streamId, double soundLevel) {
+  void onSoundLevel(String streamId, int soundLevel) {
     this.setState(() {
       textBuffer.write("onSoundLevel streamId($streamId)");
     });

@@ -34,7 +34,7 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
         Logger.getInstance().defaultTagD("onSoundLevel streamId($streamId) soundLevel($soundLevel)")
         val resultData = JSONObject()
         resultData.put(STREAM_ID, streamId)
-        resultData.put(SOUND_LEVEL, soundLevel)
+        resultData.put(SOUND_LEVEL, soundLevel.toInt())
         setResultData(ROOM_SOUND_LEVEL, resultData)
     }
 

@@ -121,10 +121,16 @@ class ZgAudioPlugin : MethodCallHandler {
             }
             INIT_ROOM_LISTENER->{
                 voiceAccessor.registerRoomCallbacks(roomHandler)
+                voiceAccessor.registerStreamCallback(roomHandler)
+                voiceAccessor.registerSoundLevelCallback(roomHandler)
+                voiceAccessor.setPullerCallback(roomHandler)
                 voiceAccessor.registerRoomMessageCallback(roomStreamHandler)
             }
             DESTROY_ROOM_LISTENER->{
                 voiceAccessor.unRegisterRoomCallbacks(roomHandler)
+                voiceAccessor.unRegisterStreamCallback(roomHandler)
+                voiceAccessor.unRegisterSoundLevelCallback(roomHandler)
+                voiceAccessor.setPullerCallback(null)
                 voiceAccessor.unRegisterRoomMessageCallbacks(roomStreamHandler)
             }
             else -> result.notImplemented()

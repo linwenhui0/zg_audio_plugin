@@ -61,7 +61,7 @@ class ZgAudioPlugin {
         if (_roomCallbacks != null) {
           var resultData = jsonResult[Constants.RESULT_DATA];
           String streamId = resultData[Constants.STREAM_ID];
-          double soundLevel = resultData[Constants.SOUND_LEVEL];
+          int soundLevel = resultData[Constants.SOUND_LEVEL];
           _roomCallbacks.forEach((_roomCallback) =>
               _roomCallback.onSoundLevel(streamId, soundLevel));
         }
@@ -293,7 +293,7 @@ abstract class ILoginCallback {
 }
 
 abstract class IRoomCallback {
-  void onSoundLevel(String streamId, double soundLevel);
+  void onSoundLevel(String streamId, int soundLevel);
 
   void onPullerStreamUpdate(
       String userId, String streamId, bool mic, bool speaker, int micLocation);

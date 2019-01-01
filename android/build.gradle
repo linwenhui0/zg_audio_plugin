@@ -59,6 +59,6 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.yfwl.zego.sdk:zegolibrary:0.0.3.60-SNAPSHOT"
+    implementation "com.yfwl.zego.sdk:zegolibrary:0.0.3.94-SNAPSHOT"
     implementation "com.hlibrary.util:utillibrary:0.0.4"
 }

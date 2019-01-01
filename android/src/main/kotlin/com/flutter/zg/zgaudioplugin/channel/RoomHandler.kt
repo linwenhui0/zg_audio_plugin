@@ -32,6 +32,29 @@ import org.json.JSONObject
 class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPullerCallback, ISoundLevelCallback {
 
 
+    override fun onRemoteStartPublish(userId: String?, location: Int) {
+    }
+
+    override fun onRemoteStopPublish(userId: String?) {
+    }
+
+    override fun onRemoteGaveUpPublish(userId: String?) {
+    }
+
+    override fun onMicLockPosition(location: Int) {
+    }
+
+    override fun onMicUnLockPosition(location: Int) {
+    }
+
+    override fun onLockPosition(location: Int) {
+    }
+
+    override fun onUnLockPostion(location: Int) {
+    }
+
+    override fun onRecvCustomCommand(p0: String?, p1: String?, p2: String?, p3: Int, p4: String?) {
+    }
 
     override fun onSoundLevel(streamId: String?, soundLevel: Float) {
         Logger.getInstance().defaultTagD("onSoundLevel streamId($streamId) soundLevel($soundLevel)")

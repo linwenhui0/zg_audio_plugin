@@ -16,9 +16,7 @@ import com.flutter.zg.contants.Constants.Companion.Method.Companion.ROOM_ID
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.SESSION_ID
 import com.hlibrary.util.Logger
 import com.yfwl.voice.model.RoomMessage
-import com.yfwl.voice.model.User
 import com.yfwl.voice.voicelistener.IRoomMessageCallback
-import com.yfwl.voice.voicelistener.IStreamCallback
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -36,7 +34,7 @@ class RoomStreamHandler : DefaultStreamHandler(), IRoomMessageCallback {
         setResultData(ROOM_SEND_MESSAGE_ERROR, jsonObject)
     }
 
-    override fun onRecvMessage(roomId: String?, messages: Array<out RoomMessage>?) {
+    override fun onRecvMessage(roomId: String?, messages: List<RoomMessage>?) {
         Logger.getInstance().defaultTagD("onRecvMessage roomId($roomId) messages($messages)")
         if (messages != null) {
             val len = messages.size

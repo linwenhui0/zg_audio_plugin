@@ -62,8 +62,8 @@ class ZgAudioPlugin {
           var resultData = jsonResult[Constants.RESULT_DATA];
           String streamId = resultData[Constants.STREAM_ID];
           int soundLevel = resultData[Constants.SOUND_LEVEL];
-          _roomCallbacks.forEach((_roomCallback) =>
-              _roomCallback.onSoundLevel(streamId, soundLevel));
+          _roomStreamCallbacks.forEach((_roomStreamCallback) =>
+              _roomStreamCallback.onSoundLevel(streamId, soundLevel));
         }
         break;
       case Constants.ROOM_PULLER_STREAM_UPDATE:
@@ -72,11 +72,11 @@ class ZgAudioPlugin {
           String userId = resultData[Constants.USER_ID];
           String streamId = resultData[Constants.STREAM_ID];
           bool mic = resultData[Constants.ENABLE_MIC];
-          bool spreak = resultData[Constants.ENABLE_SPEAKER];
+          bool speaker = resultData[Constants.ENABLE_SPEAKER];
           int micLocation = resultData[Constants.MIC_LOCATION];
-          _roomCallbacks.forEach((_roomCallback) =>
-              _roomCallback.onPullerStreamUpdate(
-                  userId, streamId, mic, spreak, micLocation));
+          _roomStreamCallbacks.forEach((_roomStreamCallback) =>
+              _roomStreamCallback.onPullerStreamUpdate(
+                  userId, streamId, mic, speaker, micLocation));
         }
         break;
       case Constants.ROOM_STREAM_UPDATE:
@@ -84,10 +84,11 @@ class ZgAudioPlugin {
           var resultData = jsonResult[Constants.RESULT_DATA];
           String userId = resultData[Constants.USER_ID];
           bool mic = resultData[Constants.ENABLE_MIC];
-          bool speak = resultData[Constants.ENABLE_SPEAKER];
+          bool speaker = resultData[Constants.ENABLE_SPEAKER];
           int micLocation = resultData[Constants.MIC_LOCATION];
-          _roomCallbacks.forEach((_roomCallback) =>
-              _roomCallback.onStreamUpdate(userId, mic, speak, micLocation));
+          _roomStreamCallbacks.forEach((_roomStreamCallback) =>
+              _roomStreamCallback.onStreamUpdate(
+                  userId, mic, speaker, micLocation));
         }
         break;
       case Constants.ROOM_STREAM_ADD:
@@ -100,16 +101,16 @@ class ZgAudioPlugin {
               streamId: resultData[Constants.STREAM_ID],
               speaker: resultData[Constants.ENABLE_SPEAKER],
               micLocation: resultData[Constants.MIC_LOCATION]);
-          _roomCallbacks
-              .forEach((_roomCallback) => _roomCallback.onStreamAdd(user));
+          _roomStreamCallbacks.forEach(
+              (_roomStreamCallback) => _roomStreamCallback.onStreamAdd(user));
         }
         break;
       case Constants.ROOM_STREAM_REMOVE:
         if (_roomCallbacks != null) {
           var resultData = jsonResult[Constants.RESULT_DATA];
           String userId = resultData[Constants.USER_ID];
-          _roomCallbacks
-              .forEach((_roomCallback) => _roomCallback.onStreamRemove(userId));
+          _roomStreamCallbacks.forEach((_roomStreamCallback) =>
+              _roomStreamCallback.onStreamRemove(userId));
         }
         break;
       case Constants.ROOM_ADD_USER:
@@ -122,16 +123,16 @@ class ZgAudioPlugin {
               streamId: resultData[Constants.STREAM_ID],
               speaker: resultData[Constants.ENABLE_SPEAKER],
               micLocation: resultData[Constants.MIC_LOCATION]);
-          _roomCallbacks
-              .forEach((_roomCallback) => _roomCallback.onAddUser(user));
+          _roomUserCallbacks.forEach(
+              (_roomUserCallback) => _roomUserCallback.onAddUser(user));
         }
         break;
       case Constants.ROOM_REMOVE_USER:
         if (_roomCallbacks != null) {
           var resultData = jsonResult[Constants.RESULT_DATA];
           String userId = resultData[Constants.USER_ID];
-          _roomCallbacks
-              .forEach((_roomCallback) => _roomCallback.onRemoveUser(userId));
+          _roomUserCallbacks.forEach(
+              (_roomUserCallback) => _roomUserCallback.onRemoveUser(userId));
         }
         break;
       case Constants.ROOM_DISCONNECT:
@@ -204,6 +205,8 @@ class ZgAudioPlugin {
   }
 
   List<ILoginCallback> _loginCallbacks = List();
+  List<IRoomUserCallback> _roomUserCallbacks = List();
+  List<IRoomStreamCallback> _roomStreamCallbacks = List();
   List<IRoomCallback> _roomCallbacks = List();
   List<IRoomMessageCallback> _roomMessageCallbacks = List();
 
@@ -216,6 +219,35 @@ class ZgAudioPlugin {
   Future<void> unRegisterLoginCallback(ILoginCallback loginCallback) async {
     if (loginCallback != null && _loginCallbacks.contains(loginCallback)) {
       _loginCallbacks.remove(loginCallback);
+    }
+  }
+
+  Future<void> registerRoomUserCallback(IRoomUserCallback userCallback) async {
+    if (userCallback != null && !_roomUserCallbacks.contains(userCallback)) {
+      _roomUserCallbacks.add(userCallback);
+    }
+  }
+
+  Future<void> unRegisterRoomUserCallback(
+      IRoomUserCallback userCallback) async {
+    if (userCallback != null && _roomUserCallbacks.contains(userCallback)) {
+      _roomUserCallbacks.remove(userCallback);
+    }
+  }
+
+  Future<void> registerRoomStreamCallback(
+      IRoomStreamCallback roomStreamCallback) async {
+    if (roomStreamCallback != null &&
+        !_roomStreamCallbacks.contains(roomStreamCallback)) {
+      _roomStreamCallbacks.add(roomStreamCallback);
+    }
+  }
+
+  Future<void> unRegisterRoomStreamCallback(
+      IRoomStreamCallback roomStreamCallback) async {
+    if (roomStreamCallback != null &&
+        _roomStreamCallbacks.contains(roomStreamCallback)) {
+      _roomStreamCallbacks.remove(roomStreamCallback);
     }
   }
 
@@ -278,21 +310,30 @@ class ZgAudioPlugin {
     await _channel.invokeMethod(Constants.INIT_ROOM_LISTENER);
   }
 
-  destroyRoomListener() async{
+  destroyRoomListener() async {
     await _channel.invokeMethod(Constants.DESTROY_ROOM_LISTENER);
   }
-
-
 }
 
 abstract class ILoginCallback {
-
   void onLoginSuc();
 
   void onLoginFailure();
 }
 
 abstract class IRoomCallback {
+  void onDisconnect(int errorCode, String roomId);
+
+  void onKickOut(int errorCode, String roomId);
+}
+
+abstract class IRoomUserCallback {
+  void onAddUser(User user);
+
+  void onRemoveUser(String userId);
+}
+
+abstract class IRoomStreamCallback {
   void onSoundLevel(String streamId, int soundLevel);
 
   void onPullerStreamUpdate(
@@ -303,14 +344,6 @@ abstract class IRoomCallback {
   void onStreamAdd(User user);
 
   void onStreamRemove(String userId);
-
-  void onAddUser(User user);
-
-  void onRemoveUser(String userId);
-
-  void onDisconnect(int errorCode, String roomId);
-
-  void onKickOut(int errorCode, String roomId);
 }
 
 abstract class IRoomMessageCallback {

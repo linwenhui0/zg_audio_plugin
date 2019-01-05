@@ -3,16 +3,21 @@ package com.flutter.zg.zgaudioplugin.channel
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_ADD_USER
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_DISCONNECT
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_KICK_OUT
+import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_LOCK_MIC
+import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_LOCK_POSITION
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_PULLER_STREAM_UPDATE
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_REMOVE_USER
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_SOUND_LEVEL
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_STREAM_ADD
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_STREAM_REMOVE
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_STREAM_UPDATE
+import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_UNLOCK_MIC
+import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_UNLOCK_POSITION
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.ENABLE_MIC
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.ENABLE_SPEAKER
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.ERROR_CODE
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.MIC_LOCATION
+import com.flutter.zg.contants.Constants.Companion.Method.Companion.POSITION
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.ROOM_ID
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.SOUND_LEVEL
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.STREAM_ID
@@ -42,15 +47,31 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
     }
 
     override fun onMicLockPosition(location: Int) {
+        Logger.getInstance().defaultTagD("onMicLockPosition location($location)")
+        val resultData = JSONObject()
+        resultData.put(POSITION, location)
+        setResultData(ROOM_LOCK_MIC, resultData)
     }
 
     override fun onMicUnLockPosition(location: Int) {
+        Logger.getInstance().defaultTagD("onMicLockPosition location($location)")
+        val resultData = JSONObject()
+        resultData.put(POSITION, location)
+        setResultData(ROOM_UNLOCK_MIC, resultData)
     }
 
     override fun onLockPosition(location: Int) {
+        Logger.getInstance().defaultTagD("onLockPosition location($location)")
+        val resultData = JSONObject()
+        resultData.put(POSITION, location)
+        setResultData(ROOM_LOCK_POSITION, resultData)
     }
 
     override fun onUnLockPostion(location: Int) {
+        Logger.getInstance().defaultTagD("onUnLockPosition location($location)")
+        val resultData = JSONObject()
+        resultData.put(POSITION, location)
+        setResultData(ROOM_UNLOCK_POSITION, resultData)
     }
 
     override fun onRecvCustomCommand(p0: String?, p1: String?, p2: String?, p3: Int, p4: String?) {
@@ -132,7 +153,7 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
     override fun onDisconnect(errorCode: Int, roomId: String?) {
         Logger.getInstance().defaultTagD("onDisconnect errorCode($errorCode) roomId($roomId)")
         val resultData = JSONObject()
-        resultData.put(ERROR_CODE,errorCode)
+        resultData.put(ERROR_CODE, errorCode)
         resultData.put(ROOM_ID, roomId)
         setResultData(ROOM_DISCONNECT, resultData)
     }
@@ -140,7 +161,7 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
     override fun onKickOut(errorCode: Int, roomId: String?) {
         Logger.getInstance().defaultTagD("onKickOut errorCode($errorCode) roomId($roomId)")
         val resultData = JSONObject()
-        resultData.put(ERROR_CODE,errorCode)
+        resultData.put(ERROR_CODE, errorCode)
         resultData.put(ROOM_ID, roomId)
         setResultData(ROOM_KICK_OUT, resultData)
     }

@@ -7,8 +7,8 @@ class Constants {
   static const String SEND_MESSAGE = "sendMessage"; //房间内发送消息
   static const String OPEN_SPEAKER = "openSpeaker"; //打开扬声器
   static const String OPEN_MIC = "openMic"; //打开麦克风
-  static const String INIT_ROOM_LISTENER = "initRoomListener";//初始化房间回调
-  static const String DESTROY_ROOM_LISTENER = "destroyRoomListener";//回收房间回调
+  static const String INIT_ROOM_LISTENER = "initRoomListener"; //初始化房间回调
+  static const String DESTROY_ROOM_LISTENER = "destroyRoomListener"; //回收房间回调
 
   static const String LOGIN_STATUS_CHANNEL = "loginStatusChannel"; //用户在线渠道
   static const String LOGIN_SUC = "onLoginSuc"; //登录成功
@@ -25,6 +25,10 @@ class Constants {
   static const String ROOM_PULLER_STREAM_UPDATE =
       "onPullerStreamUpdate"; //拉取流数据
   static const String ROOM_SOUND_LEVEL = "onSoundLevel"; //声量回调
+  static const String ROOM_LOCK_POSITION = "onLockPosition"; //锁麦位回调
+  static const String ROOM_UNLOCK_POSITION = "onUnLockPosition"; //解锁锁麦位回调
+  static const String ROOM_LOCK_MIC = "onLockMicPosition"; //锁麦回调
+  static const String ROOM_UNLOCK_MIC = "onUnLockMicPosition"; //解锁锁麦回调
 
   static const String ROOM_MESSAGE_CHANNEL = "roomMessageChannel"; //房间内消息渠道
   static const String ROOM_SEND_MESSAGE_ERROR = "onSendMessageError"; //发送消息出错
@@ -42,6 +46,7 @@ class Constants {
   static const String SOUND_LEVEL = "soundLevel"; //麦的音量
   static const String SESSION_ID = "sessionId"; //会话id
   static const String ERROR_CODE = "errorCode"; //错误码
+  static const String POSITION = "position";//位置
 
   static const String MESSAGES = "messages"; //消息
   static const String MESSAGE_TYPE = "messageType"; //消息类型

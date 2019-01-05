@@ -57,6 +57,38 @@ class ZgAudioPlugin {
     var jsonResult = jsonDecode(event);
     String methodName = jsonResult[Constants.METHOD_NAME];
     switch (methodName) {
+      case Constants.ROOM_UNLOCK_MIC:
+        if (_roomUserCallbacks != null) {
+          var resultData = jsonResult[Constants.RESULT_DATA];
+          int position = resultData[Constants.POSITION];
+          _roomStreamCallbacks.forEach((_roomStreamCallback) =>
+              _roomStreamCallback.onUnLockMicPosition(position));
+        }
+        break;
+      case Constants.ROOM_LOCK_MIC:
+        if (_roomUserCallbacks != null) {
+          var resultData = jsonResult[Constants.RESULT_DATA];
+          int position = resultData[Constants.POSITION];
+          _roomStreamCallbacks.forEach((_roomStreamCallback) =>
+              _roomStreamCallback.onLockMicPosition(position));
+        }
+        break;
+      case Constants.ROOM_UNLOCK_POSITION:
+        if (_roomUserCallbacks != null) {
+          var resultData = jsonResult[Constants.RESULT_DATA];
+          int position = resultData[Constants.POSITION];
+          _roomStreamCallbacks.forEach((_roomStreamCallback) =>
+              _roomStreamCallback.onUnLockPosition(position));
+        }
+        break;
+      case Constants.ROOM_LOCK_POSITION:
+        if (_roomUserCallbacks != null) {
+          var resultData = jsonResult[Constants.RESULT_DATA];
+          int position = resultData[Constants.POSITION];
+          _roomStreamCallbacks.forEach((_roomStreamCallback) =>
+              _roomStreamCallback.onLockPosition(position));
+        }
+        break;
       case Constants.ROOM_SOUND_LEVEL:
         if (_roomCallbacks != null) {
           var resultData = jsonResult[Constants.RESULT_DATA];
@@ -334,6 +366,14 @@ abstract class IRoomUserCallback {
 }
 
 abstract class IRoomStreamCallback {
+  void onLockPosition(int position);
+
+  void onUnLockPosition(int position);
+
+  void onLockMicPosition(int position);
+
+  void onUnLockMicPosition(int position);
+
   void onSoundLevel(String streamId, int soundLevel);
 
   void onPullerStreamUpdate(

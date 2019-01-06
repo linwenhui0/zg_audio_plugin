@@ -4,8 +4,11 @@ import com.flutter.zg.contants.Constants.Companion.Channel.Companion.LOGIN_CHANN
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_MEMBER_CHANNEL
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_MESSAGE_CHANNEL
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.DESTROY_ROOM_LISTENER
+import com.flutter.zg.contants.Constants.Companion.Method.Companion.GAVE_UP_START_PUBLISH
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.INIT_ROOM_LISTENER
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.INIT_SDK
+import com.flutter.zg.contants.Constants.Companion.Method.Companion.LOCK_MIC
+import com.flutter.zg.contants.Constants.Companion.Method.Companion.LOCK_POSITION
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.LOGIN
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.LOGOUT
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.MESSAGE_CATEGORY
@@ -13,9 +16,16 @@ import com.flutter.zg.contants.Constants.Companion.Method.Companion.MESSAGE_CONT
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.MESSAGE_TYPE
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.OPEN_MIC
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.OPEN_SPEAKER
+import com.flutter.zg.contants.Constants.Companion.Method.Companion.POINT_USER_START_PUBLISH
+import com.flutter.zg.contants.Constants.Companion.Method.Companion.POINT_USER_STOP_PUBLISH
+import com.flutter.zg.contants.Constants.Companion.Method.Companion.POSITION
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.ROOM_ID
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.ROOM_NAME
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.SEND_MESSAGE
+import com.flutter.zg.contants.Constants.Companion.Method.Companion.START_PUBLISH
+import com.flutter.zg.contants.Constants.Companion.Method.Companion.STOP_PUBLISH
+import com.flutter.zg.contants.Constants.Companion.Method.Companion.UNLOCK_MIC
+import com.flutter.zg.contants.Constants.Companion.Method.Companion.UNLOCK_POSITION
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.USER_ID
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.USER_NAME
 import com.flutter.zg.contants.Constants.Companion.PLUGIN
@@ -121,7 +131,7 @@ class ZgAudioPlugin : MethodCallHandler {
                 val mic: Boolean? = call.argument(OPEN_MIC)
                 voiceAccessor.openMic(mic!!)
             }
-            INIT_ROOM_LISTENER->{
+            INIT_ROOM_LISTENER -> {
                 Logger.getInstance().defaultTagD("$INIT_ROOM_LISTENER")
 
                 voiceAccessor.registerRoomCallbacks(roomHandler)
@@ -129,12 +139,52 @@ class ZgAudioPlugin : MethodCallHandler {
                 voiceAccessor.registerSoundLevelCallback(roomHandler)
                 voiceAccessor.registerRoomMessageCallback(roomStreamHandler)
             }
-            DESTROY_ROOM_LISTENER->{
+            DESTROY_ROOM_LISTENER -> {
                 Logger.getInstance().defaultTagD("$DESTROY_ROOM_LISTENER")
                 voiceAccessor.unRegisterRoomCallbacks(roomHandler)
                 voiceAccessor.unRegisterStreamCallback(roomHandler)
                 voiceAccessor.unRegisterSoundLevelCallback(roomHandler)
                 voiceAccessor.unRegisterRoomMessageCallbacks(roomStreamHandler)
+            }
+            START_PUBLISH -> {
+                val position: Int? = call.argument(POSITION)
+                voiceAccessor.startPublish(position!!)
+            }
+            STOP_PUBLISH -> {
+                voiceAccessor.stopPublish()
+            }
+            POINT_USER_START_PUBLISH -> {
+                val position: Int? = call.argument(POSITION)
+                val userId: String? = call.argument(USER_ID)
+                val userName: String? = call.argument(USER_NAME)
+                voiceAccessor.startPublish(userId, userName, position!!)
+            }
+            GAVE_UP_START_PUBLISH -> {
+                val position: Int? = call.argument(POSITION)
+                val userId: String? = call.argument(USER_ID)
+                val userName: String? = call.argument(USER_NAME)
+                voiceAccessor.gaveUpStartPublish(userId, userName, position!!)
+            }
+            POINT_USER_STOP_PUBLISH -> {
+                val userId: String? = call.argument(USER_ID)
+                val userName: String? = call.argument(USER_NAME)
+                voiceAccessor.stopPublish(userId, userName)
+            }
+            LOCK_POSITION -> {
+                val position: Int? = call.argument(POSITION)
+                voiceAccessor.lockPosition(position!!)
+            }
+            UNLOCK_POSITION->{
+                val position: Int? = call.argument(POSITION)
+                voiceAccessor.unLockPosition(position!!)
+            }
+            LOCK_MIC->{
+                val position: Int? = call.argument(POSITION)
+                voiceAccessor.lockMic(position!!)
+            }
+            UNLOCK_MIC->{
+                val position: Int? = call.argument(POSITION)
+                voiceAccessor.unLockMic(position!!)
             }
             else -> result.notImplemented()
         }

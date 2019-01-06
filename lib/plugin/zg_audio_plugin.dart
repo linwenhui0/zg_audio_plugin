@@ -345,6 +345,56 @@ class ZgAudioPlugin {
   destroyRoomListener() async {
     await _channel.invokeMethod(Constants.DESTROY_ROOM_LISTENER);
   }
+
+  startPublish(int position) async {
+    await _channel
+        .invokeMethod(Constants.START_PUBLISH, {Constants.POSITION: position});
+  }
+
+  stopPublish() async {
+    await _channel.invokeMethod(Constants.STOP_PUBLISH);
+  }
+
+  pointUserStartPublish(String userId, String userName, int position) async {
+    await _channel.invokeMethod(Constants.POINT_USER_START_PUBLISH, {
+      Constants.POSITION: position,
+      Constants.USER_ID: userId,
+      Constants.USER_NAME: userName
+    });
+  }
+
+  gaveUpStartPublish(String userId, String userName, int position) async {
+    await _channel.invokeMethod(Constants.GAVE_UP_START_PUBLISH, {
+      Constants.POSITION: position,
+      Constants.USER_ID: userId,
+      Constants.USER_NAME: userName
+    });
+  }
+
+  pointUserStopPublish(String userId, String userName) async {
+    await _channel.invokeMethod(Constants.POINT_USER_STOP_PUBLISH,
+        {Constants.USER_ID: userId, Constants.USER_NAME: userName});
+  }
+
+  lockPosition(int position) async {
+    await _channel
+        .invokeMethod(Constants.LOCK_POSITION, {Constants.POSITION: position});
+  }
+
+  unLockPosition(int position) async {
+    await _channel.invokeMethod(
+        Constants.UNLOCK_POSITION, {Constants.POSITION: position});
+  }
+
+  lockMic(int position) async {
+    await _channel
+        .invokeMethod(Constants.LOCK_MIC, {Constants.POSITION: position});
+  }
+
+  unLockMic(int position) async {
+    await _channel
+        .invokeMethod(Constants.UNLOCK_MIC, {Constants.POSITION: position});
+  }
 }
 
 abstract class ILoginCallback {

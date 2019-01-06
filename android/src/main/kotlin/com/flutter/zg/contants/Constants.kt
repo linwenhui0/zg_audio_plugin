@@ -16,7 +16,15 @@ class Constants {
                 const val OPEN_MIC = "openMic"//打开麦克风
                 const val INIT_ROOM_LISTENER = "initRoomListener"//初始化房间回调
                 const val DESTROY_ROOM_LISTENER = "destroyRoomListener"//回收房间回调
-
+                const val START_PUBLISH = "startPublish"//开启推流
+                const val STOP_PUBLISH = "stopPublish"//停止推流
+                const val POINT_USER_START_PUBLISH = "pointUserStartPublish"//指定用户上麦
+                const val GAVE_UP_START_PUBLISH = "gaveUpStartPublish"//放弃上麦
+                const val POINT_USER_STOP_PUBLISH = "pointUserStopPublish"//指定用户上麦
+                const val LOCK_POSITION="lockPosition"//锁麦位
+                const val UNLOCK_POSITION = "unLockPosition"//解锁麦位
+                const val LOCK_MIC = "lockMic"//锁mic
+                const val UNLOCK_MIC ="unLockMic"//解锁mic
 
                 const val USER_ID = "userId"//用户id
                 const val USER_NAME = "userName"//用户

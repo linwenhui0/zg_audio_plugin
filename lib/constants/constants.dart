@@ -9,6 +9,15 @@ class Constants {
   static const String OPEN_MIC = "openMic"; //打开麦克风
   static const String INIT_ROOM_LISTENER = "initRoomListener"; //初始化房间回调
   static const String DESTROY_ROOM_LISTENER = "destroyRoomListener"; //回收房间回调
+  static const String START_PUBLISH = "startPublish"; //开启推流
+  static const String STOP_PUBLISH = "stopPublish"; //停止推流
+  static const String POINT_USER_START_PUBLISH = "pointUserStartPublish";//指定用户上麦
+  static const String GAVE_UP_START_PUBLISH = "gaveUpStartPublish"; //放弃上麦
+  static const String POINT_USER_STOP_PUBLISH = "pointUserStopPublish"; //指定用户上麦
+  static const String LOCK_POSITION = "lockPosition"; //锁麦位
+  static const String UNLOCK_POSITION = "unLockPosition"; //解锁麦位
+  static const String LOCK_MIC = "lockMic"; //锁mic
+  static const String UNLOCK_MIC = "unLockMic"; //解锁mic
 
   static const String LOGIN_STATUS_CHANNEL = "loginStatusChannel"; //用户在线渠道
   static const String LOGIN_SUC = "onLoginSuc"; //登录成功
@@ -46,7 +55,7 @@ class Constants {
   static const String SOUND_LEVEL = "soundLevel"; //麦的音量
   static const String SESSION_ID = "sessionId"; //会话id
   static const String ERROR_CODE = "errorCode"; //错误码
-  static const String POSITION = "position";//位置
+  static const String POSITION = "position"; //位置
 
   static const String MESSAGES = "messages"; //消息
   static const String MESSAGE_TYPE = "messageType"; //消息类型

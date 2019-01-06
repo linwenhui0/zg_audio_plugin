@@ -41,6 +41,7 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry.Registrar
+import java.util.concurrent.Executors
 
 class ZgAudioPlugin : MethodCallHandler {
 
@@ -73,6 +74,8 @@ class ZgAudioPlugin : MethodCallHandler {
     private val registrar: Registrar
 
     private val voiceAccessor: DefaultVoiceAccessor<ZegoVoiceAccessor>
+
+    private val pools = Executors.newFixedThreadPool(3);
 
     var result: Result? = null
 
@@ -160,7 +163,10 @@ class ZgAudioPlugin : MethodCallHandler {
                 val position: Int? = call.argument(POSITION)
                 val userId: String? = call.argument(USER_ID)
                 val userName: String? = call.argument(USER_NAME)
-                result.success(voiceAccessor.startPublish(userId, userName, position!!))
+                pools.submit(Thread(Runnable {
+                    Logger.getInstance().defaultTagD("POINT_USER_START_PUBLISH")
+                    result.success(voiceAccessor.startPublish(userId, userName, position!!))
+                }))
             }
             GAVE_UP_START_PUBLISH -> {
                 val position: Int? = call.argument(POSITION)
@@ -178,17 +184,17 @@ class ZgAudioPlugin : MethodCallHandler {
                 voiceAccessor.lockPosition(position!!)
                 result.success(true)
             }
-            UNLOCK_POSITION->{
+            UNLOCK_POSITION -> {
                 val position: Int? = call.argument(POSITION)
                 voiceAccessor.unLockPosition(position!!)
                 result.success(true)
             }
-            LOCK_MIC->{
+            LOCK_MIC -> {
                 val position: Int? = call.argument(POSITION)
                 voiceAccessor.lockMic(position!!)
                 result.success(true)
             }
-            UNLOCK_MIC->{
+            UNLOCK_MIC -> {
                 val position: Int? = call.argument(POSITION)
                 voiceAccessor.unLockMic(position!!)
                 result.success(true)

@@ -24,11 +24,6 @@
   <component name="ChangeListManager">
     <list default="true" id="627de969-77f4-4419-9ddc-cd8af3c5c7e6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/flutter/zg/zgaudioplugin/ZgAudioPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/flutter/zg/zgaudioplugin/ZgAudioPlugin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/.gradle/4.10.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.gradle/4.10.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/.gradle/4.10.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.gradle/4.10.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/.gradle/4.10.2/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.gradle/4.10.2/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/.gradle/4.10.2/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.gradle/4.10.2/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />

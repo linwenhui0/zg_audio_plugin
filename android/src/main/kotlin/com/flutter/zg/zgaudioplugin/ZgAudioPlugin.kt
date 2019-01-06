@@ -172,32 +172,49 @@ class ZgAudioPlugin : MethodCallHandler {
                 val position: Int? = call.argument(POSITION)
                 val userId: String? = call.argument(USER_ID)
                 val userName: String? = call.argument(USER_NAME)
-                result.success(voiceAccessor.gaveUpStartPublish(userId, userName, position!!))
+                pools.submit(Thread(Runnable {
+                    result.success(voiceAccessor.gaveUpStartPublish(userId, userName, position!!))
+                }))
+
             }
             POINT_USER_STOP_PUBLISH -> {
                 val userId: String? = call.argument(USER_ID)
                 val userName: String? = call.argument(USER_NAME)
-                result.success(voiceAccessor.stopPublish(userId, userName))
+                pools.submit(Thread(Runnable {
+                    result.success(voiceAccessor.stopPublish(userId, userName))
+                }))
+
             }
             LOCK_POSITION -> {
                 val position: Int? = call.argument(POSITION)
-                voiceAccessor.lockPosition(position!!)
-                result.success(true)
+                pools.submit(Thread(Runnable {
+                    voiceAccessor.lockPosition(position!!)
+                    result.success(true)
+                }))
+
             }
             UNLOCK_POSITION -> {
                 val position: Int? = call.argument(POSITION)
-                voiceAccessor.unLockPosition(position!!)
-                result.success(true)
+                pools.submit(Thread(Runnable {
+                    voiceAccessor.unLockPosition(position!!)
+                    result.success(true)
+                }))
             }
             LOCK_MIC -> {
                 val position: Int? = call.argument(POSITION)
-                voiceAccessor.lockMic(position!!)
-                result.success(true)
+                pools.submit(Thread(Runnable {
+                    voiceAccessor.lockMic(position!!)
+                    result.success(true)
+                }))
+
             }
             UNLOCK_MIC -> {
                 val position: Int? = call.argument(POSITION)
-                voiceAccessor.unLockMic(position!!)
-                result.success(true)
+                pools.submit(Thread(Runnable {
+                    voiceAccessor.unLockMic(position!!)
+                    result.success(true)
+                }))
+
             }
             else -> result.notImplemented()
         }

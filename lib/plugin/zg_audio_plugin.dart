@@ -312,15 +312,16 @@ class ZgAudioPlugin {
   }
 
   login(String roomId, String roomName) async {
-    return await _channel.invokeMethod(Constants.LOGIN,
+    await _channel.invokeMethod(Constants.LOGIN,
         {Constants.ROOM_ID: roomId, Constants.ROOM_NAME: roomName});
   }
 
-  logout() async {
+  Future<bool> logout() async {
     return await _channel.invokeMethod(Constants.LOGOUT);
   }
 
-  sendMessage(int messageType, int messageCategory, String content) async {
+  Future<bool> sendMessage(
+      int messageType, int messageCategory, String content) async {
     return await _channel.invokeMethod(Constants.SEND_MESSAGE, {
       Constants.MESSAGE_TYPE: messageType,
       Constants.MESSAGE_CATEGORY: messageCategory,
@@ -329,12 +330,12 @@ class ZgAudioPlugin {
   }
 
   openSpeaker(bool enable) async {
-    return await _channel
+    await _channel
         .invokeMethod(Constants.OPEN_SPEAKER, {Constants.OPEN_SPEAKER: enable});
   }
 
   openMic(bool enable) async {
-    return await _channel
+    await _channel
         .invokeMethod(Constants.OPEN_MIC, {Constants.OPEN_MIC: enable});
   }
 
@@ -346,33 +347,35 @@ class ZgAudioPlugin {
     await _channel.invokeMethod(Constants.DESTROY_ROOM_LISTENER);
   }
 
-  startPublish(int position) async {
-    await _channel
+  Future<bool> startPublish(int position) async {
+    return await _channel
         .invokeMethod(Constants.START_PUBLISH, {Constants.POSITION: position});
   }
 
-  stopPublish() async {
-    await _channel.invokeMethod(Constants.STOP_PUBLISH);
+  Future<bool> stopPublish() async {
+    return await _channel.invokeMethod(Constants.STOP_PUBLISH);
   }
 
-  pointUserStartPublish(String userId, String userName, int position) async {
-    await _channel.invokeMethod(Constants.POINT_USER_START_PUBLISH, {
+  Future<bool> pointUserStartPublish(
+      String userId, String userName, int position) async {
+    return await _channel.invokeMethod(Constants.POINT_USER_START_PUBLISH, {
       Constants.POSITION: position,
       Constants.USER_ID: userId,
       Constants.USER_NAME: userName
     });
   }
 
-  gaveUpStartPublish(String userId, String userName, int position) async {
-    await _channel.invokeMethod(Constants.GAVE_UP_START_PUBLISH, {
+  Future<bool> gaveUpStartPublish(
+      String userId, String userName, int position) async {
+    return await _channel.invokeMethod(Constants.GAVE_UP_START_PUBLISH, {
       Constants.POSITION: position,
       Constants.USER_ID: userId,
       Constants.USER_NAME: userName
     });
   }
 
-  pointUserStopPublish(String userId, String userName) async {
-    await _channel.invokeMethod(Constants.POINT_USER_STOP_PUBLISH,
+  Future<bool> pointUserStopPublish(String userId, String userName) async {
+    return await _channel.invokeMethod(Constants.POINT_USER_STOP_PUBLISH,
         {Constants.USER_ID: userId, Constants.USER_NAME: userName});
   }
 

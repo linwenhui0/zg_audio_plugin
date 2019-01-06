@@ -54,7 +54,7 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
     }
 
     override fun onMicUnLockPosition(location: Int) {
-        Logger.getInstance().defaultTagD("onMicLockPosition location($location)")
+        Logger.getInstance().defaultTagD("onMicUnLockPosition location($location)")
         val resultData = JSONObject()
         resultData.put(POSITION, location)
         setResultData(ROOM_UNLOCK_MIC, resultData)

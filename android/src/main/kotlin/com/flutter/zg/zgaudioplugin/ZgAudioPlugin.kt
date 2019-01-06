@@ -122,14 +122,17 @@ class ZgAudioPlugin : MethodCallHandler {
                 val content: String? = call.argument(MESSAGE_CONTENT)
                 Logger.getInstance().defaultTagD("发送消息 $MESSAGE_TYPE(", messageType, ") , $MESSAGE_CATEGORY(", messageCategory, ") , $MESSAGE_CONTENT(", content, ")")
                 voiceAccessor.sendRoomMessage(messageType!!, messageCategory!!, content as String)
+                result.success(true)
             }
             OPEN_SPEAKER -> {
                 val speaker: Boolean? = call.argument(OPEN_SPEAKER)
                 voiceAccessor.openSpeaker(speaker!!)
+                result.success(true)
             }
             OPEN_MIC -> {
                 val mic: Boolean? = call.argument(OPEN_MIC)
                 voiceAccessor.openMic(mic!!)
+                result.success(true)
             }
             INIT_ROOM_LISTENER -> {
                 Logger.getInstance().defaultTagD("$INIT_ROOM_LISTENER")
@@ -138,6 +141,7 @@ class ZgAudioPlugin : MethodCallHandler {
                 voiceAccessor.registerStreamCallback(roomHandler)
                 voiceAccessor.registerSoundLevelCallback(roomHandler)
                 voiceAccessor.registerRoomMessageCallback(roomStreamHandler)
+                result.success(true)
             }
             DESTROY_ROOM_LISTENER -> {
                 Logger.getInstance().defaultTagD("$DESTROY_ROOM_LISTENER")
@@ -145,46 +149,56 @@ class ZgAudioPlugin : MethodCallHandler {
                 voiceAccessor.unRegisterStreamCallback(roomHandler)
                 voiceAccessor.unRegisterSoundLevelCallback(roomHandler)
                 voiceAccessor.unRegisterRoomMessageCallbacks(roomStreamHandler)
+                result.success(true)
             }
             START_PUBLISH -> {
                 val position: Int? = call.argument(POSITION)
                 voiceAccessor.startPublish(position!!)
+                result.success(true)
             }
             STOP_PUBLISH -> {
                 voiceAccessor.stopPublish()
+                result.success(true)
             }
             POINT_USER_START_PUBLISH -> {
                 val position: Int? = call.argument(POSITION)
                 val userId: String? = call.argument(USER_ID)
                 val userName: String? = call.argument(USER_NAME)
                 voiceAccessor.startPublish(userId, userName, position!!)
+                result.success(true)
             }
             GAVE_UP_START_PUBLISH -> {
                 val position: Int? = call.argument(POSITION)
                 val userId: String? = call.argument(USER_ID)
                 val userName: String? = call.argument(USER_NAME)
                 voiceAccessor.gaveUpStartPublish(userId, userName, position!!)
+                result.success(true)
             }
             POINT_USER_STOP_PUBLISH -> {
                 val userId: String? = call.argument(USER_ID)
                 val userName: String? = call.argument(USER_NAME)
                 voiceAccessor.stopPublish(userId, userName)
+                result.success(true)
             }
             LOCK_POSITION -> {
                 val position: Int? = call.argument(POSITION)
                 voiceAccessor.lockPosition(position!!)
+                result.success(true)
             }
             UNLOCK_POSITION->{
                 val position: Int? = call.argument(POSITION)
                 voiceAccessor.unLockPosition(position!!)
+                result.success(true)
             }
             LOCK_MIC->{
                 val position: Int? = call.argument(POSITION)
                 voiceAccessor.lockMic(position!!)
+                result.success(true)
             }
             UNLOCK_MIC->{
                 val position: Int? = call.argument(POSITION)
                 voiceAccessor.unLockMic(position!!)
+                result.success(true)
             }
             else -> result.notImplemented()
         }

@@ -10,10 +10,10 @@ class User {
   User(
       {this.userId,
       this.userName,
-      this.mic,
+      this.mic = true,
       this.streamId,
       this.speaker,
-      this.lock,
+      this.lock = false,
       this.micLocation});
 
   void clearData() {

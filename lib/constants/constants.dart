@@ -31,13 +31,15 @@ class Constants {
   static const String ROOM_STREAM_ADD = "onStreamAdd"; //房间增加流数据
   static const String ROOM_STREAM_REMOVE = "onStreamRemove"; //房间删除流数据
   static const String ROOM_STREAM_UPDATE = "onStreamUpdate"; //更新房间流数据
-  static const String ROOM_PULLER_STREAM_UPDATE =
-      "onPullerStreamUpdate"; //拉取流数据
+  static const String ROOM_PULLER_STREAM_UPDATE = "onPullerStreamUpdate"; //拉取流数据
   static const String ROOM_SOUND_LEVEL = "onSoundLevel"; //声量回调
   static const String ROOM_LOCK_POSITION = "onLockPosition"; //锁麦位回调
   static const String ROOM_UNLOCK_POSITION = "onUnLockPosition"; //解锁锁麦位回调
   static const String ROOM_LOCK_MIC = "onLockMicPosition"; //锁麦回调
   static const String ROOM_UNLOCK_MIC = "onUnLockMicPosition"; //解锁锁麦回调
+  static const String ROOM_REMOTE_START_PUBLISH = "onRemoteStartPublish";//指定用户上麦
+  static const String ROOM_GAVE_UP_START_PUBLISH = "onRemoteGaveUpPublish";//用户放弃上麦
+  static const String ROOM_REMOTE_STOP_PUBLISH = "onRemoteStopPublish";//指定用户下麦
 
   static const String ROOM_MESSAGE_CHANNEL = "roomMessageChannel"; //房间内消息渠道
   static const String ROOM_SEND_MESSAGE_ERROR = "onSendMessageError"; //发送消息出错

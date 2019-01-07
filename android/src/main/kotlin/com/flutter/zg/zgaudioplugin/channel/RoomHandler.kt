@@ -2,10 +2,13 @@ package com.flutter.zg.zgaudioplugin.channel
 
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_ADD_USER
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_DISCONNECT
+import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_GAVE_UP_START_PUBLISH
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_KICK_OUT
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_LOCK_MIC
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_LOCK_POSITION
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_PULLER_STREAM_UPDATE
+import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_REMOTE_START_PUBLISH
+import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_REMOTE_STOP_PUBLISH
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_REMOVE_USER
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_SOUND_LEVEL
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_STREAM_ADD
@@ -38,12 +41,25 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
 
 
     override fun onRemoteStartPublish(userId: String?, location: Int) {
+        Logger.getInstance().defaultTagD("onRemoteStartPublish userId($userId) location($location)")
+        val resultData = JSONObject()
+        resultData.put(POSITION, location)
+        resultData.put(USER_ID,userId)
+        setResultData(ROOM_REMOTE_START_PUBLISH, resultData)
     }
 
     override fun onRemoteStopPublish(userId: String?) {
+        Logger.getInstance().defaultTagD("onRemoteStopPublish userId($userId)")
+        val resultData = JSONObject()
+        resultData.put(USER_ID,userId)
+        setResultData(ROOM_REMOTE_STOP_PUBLISH, resultData)
     }
 
     override fun onRemoteGaveUpPublish(userId: String?) {
+        Logger.getInstance().defaultTagD("onRemoteGaveUpPublish userId($userId)")
+        val resultData = JSONObject()
+        resultData.put(USER_ID,userId)
+        setResultData(ROOM_GAVE_UP_START_PUBLISH, resultData)
     }
 
     override fun onMicLockPosition(location: Int) {

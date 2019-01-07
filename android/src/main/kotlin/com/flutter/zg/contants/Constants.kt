@@ -21,10 +21,10 @@ class Constants {
                 const val POINT_USER_START_PUBLISH = "pointUserStartPublish"//指定用户上麦
                 const val GAVE_UP_START_PUBLISH = "gaveUpStartPublish"//放弃上麦
                 const val POINT_USER_STOP_PUBLISH = "pointUserStopPublish"//指定用户上麦
-                const val LOCK_POSITION="lockPosition"//锁麦位
+                const val LOCK_POSITION = "lockPosition"//锁麦位
                 const val UNLOCK_POSITION = "unLockPosition"//解锁麦位
                 const val LOCK_MIC = "lockMic"//锁mic
-                const val UNLOCK_MIC ="unLockMic"//解锁mic
+                const val UNLOCK_MIC = "unLockMic"//解锁mic
 
                 const val USER_ID = "userId"//用户id
                 const val USER_NAME = "userName"//用户
@@ -73,6 +73,9 @@ class Constants {
                 const val ROOM_UNLOCK_POSITION = "onUnLockPosition"//解锁锁麦位回调
                 const val ROOM_LOCK_MIC = "onLockMicPosition"//锁麦回调
                 const val ROOM_UNLOCK_MIC = "onUnLockMicPosition"//解锁锁麦回调
+                const val ROOM_REMOTE_START_PUBLISH = "onRemoteStartPublish"//指定用户上麦
+                const val ROOM_GAVE_UP_START_PUBLISH = "onRemoteGaveUpPublish"//用户放弃上麦
+                const val ROOM_REMOTE_STOP_PUBLISH = "onRemoteStopPublish"//指定用户下麦
 
                 const val ROOM_MESSAGE_CHANNEL = "roomMessageChannel"//房间内消息渠道
                 const val ROOM_SEND_MESSAGE_ERROR = "onSendMessageError"//发送消息出错

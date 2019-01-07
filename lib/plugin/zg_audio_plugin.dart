@@ -57,6 +57,31 @@ class ZgAudioPlugin {
     var jsonResult = jsonDecode(event);
     String methodName = jsonResult[Constants.METHOD_NAME];
     switch (methodName) {
+      case Constants.ROOM_REMOTE_STOP_PUBLISH:
+        {
+          var resultData = jsonResult[Constants.RESULT_DATA];
+          String userId = resultData[Constants.USER_ID];
+          _roomStreamCallbacks.forEach((_roomStreamCallback) =>
+              _roomStreamCallback.onRemoteStopPublish(userId));
+        }
+        break;
+      case Constants.ROOM_GAVE_UP_START_PUBLISH:
+        {
+          var resultData = jsonResult[Constants.RESULT_DATA];
+          String userId = resultData[Constants.USER_ID];
+          _roomStreamCallbacks.forEach((_roomStreamCallback) =>
+              _roomStreamCallback.onRemoteGaveUpPublish(userId));
+        }
+        break;
+      case Constants.ROOM_REMOTE_START_PUBLISH:
+        {
+          var resultData = jsonResult[Constants.RESULT_DATA];
+          int position = resultData[Constants.POSITION];
+          String userId = resultData[Constants.USER_ID];
+          _roomStreamCallbacks.forEach((_roomStreamCallback) =>
+              _roomStreamCallback.onRemoteStartPublish(position, userId));
+        }
+        break;
       case Constants.ROOM_UNLOCK_MIC:
         if (_roomUserCallbacks != null) {
           var resultData = jsonResult[Constants.RESULT_DATA];
@@ -437,6 +462,12 @@ abstract class IRoomStreamCallback {
   void onStreamAdd(User user);
 
   void onStreamRemove(String userId);
+
+  void onRemoteStartPublish(int position, String userId);
+
+  void onRemoteGaveUpPublish(String userId);
+
+  void onRemoteStopPublish(String userId);
 }
 
 abstract class IRoomMessageCallback {

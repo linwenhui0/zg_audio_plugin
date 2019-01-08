@@ -5,6 +5,7 @@ import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_MEMBER
 import com.flutter.zg.contants.Constants.Companion.Channel.Companion.ROOM_MESSAGE_CHANNEL
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.DESTROY_ROOM_LISTENER
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.GAVE_UP_START_PUBLISH
+import com.flutter.zg.contants.Constants.Companion.Method.Companion.HOUSE_OWNER
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.INIT_ROOM_LISTENER
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.INIT_SDK
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.LOCK_MIC
@@ -19,6 +20,7 @@ import com.flutter.zg.contants.Constants.Companion.Method.Companion.OPEN_SPEAKER
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.POINT_USER_START_PUBLISH
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.POINT_USER_STOP_PUBLISH
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.POSITION
+import com.flutter.zg.contants.Constants.Companion.Method.Companion.ROLE
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.ROOM_ID
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.ROOM_NAME
 import com.flutter.zg.contants.Constants.Companion.Method.Companion.SEND_MESSAGE
@@ -215,6 +217,10 @@ class ZgAudioPlugin : MethodCallHandler {
                     result.success(true)
                 }))
 
+            }
+            HOUSE_OWNER -> {
+                val role: Boolean? = call.argument(ROLE)
+                voiceAccessor.setRole(role!!)
             }
             else -> result.notImplemented()
         }

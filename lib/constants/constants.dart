@@ -11,13 +11,15 @@ class Constants {
   static const String DESTROY_ROOM_LISTENER = "destroyRoomListener"; //回收房间回调
   static const String START_PUBLISH = "startPublish"; //开启推流
   static const String STOP_PUBLISH = "stopPublish"; //停止推流
-  static const String POINT_USER_START_PUBLISH = "pointUserStartPublish";//指定用户上麦
+  static const String POINT_USER_START_PUBLISH =
+      "pointUserStartPublish"; //指定用户上麦
   static const String GAVE_UP_START_PUBLISH = "gaveUpStartPublish"; //放弃上麦
   static const String POINT_USER_STOP_PUBLISH = "pointUserStopPublish"; //指定用户上麦
   static const String LOCK_POSITION = "lockPosition"; //锁麦位
   static const String UNLOCK_POSITION = "unLockPosition"; //解锁麦位
   static const String LOCK_MIC = "lockMic"; //锁mic
   static const String UNLOCK_MIC = "unLockMic"; //解锁mic
+  static const String HOUSE_OWNER = "setHouseOwner"; //角色
 
   static const String LOGIN_STATUS_CHANNEL = "loginStatusChannel"; //用户在线渠道
   static const String LOGIN_SUC = "onLoginSuc"; //登录成功
@@ -31,15 +33,18 @@ class Constants {
   static const String ROOM_STREAM_ADD = "onStreamAdd"; //房间增加流数据
   static const String ROOM_STREAM_REMOVE = "onStreamRemove"; //房间删除流数据
   static const String ROOM_STREAM_UPDATE = "onStreamUpdate"; //更新房间流数据
-  static const String ROOM_PULLER_STREAM_UPDATE = "onPullerStreamUpdate"; //拉取流数据
+  static const String ROOM_PULLER_STREAM_UPDATE =
+      "onPullerStreamUpdate"; //拉取流数据
   static const String ROOM_SOUND_LEVEL = "onSoundLevel"; //声量回调
   static const String ROOM_LOCK_POSITION = "onLockPosition"; //锁麦位回调
   static const String ROOM_UNLOCK_POSITION = "onUnLockPosition"; //解锁锁麦位回调
   static const String ROOM_LOCK_MIC = "onLockMicPosition"; //锁麦回调
   static const String ROOM_UNLOCK_MIC = "onUnLockMicPosition"; //解锁锁麦回调
-  static const String ROOM_REMOTE_START_PUBLISH = "onRemoteStartPublish";//指定用户上麦
-  static const String ROOM_GAVE_UP_START_PUBLISH = "onRemoteGaveUpPublish";//用户放弃上麦
-  static const String ROOM_REMOTE_STOP_PUBLISH = "onRemoteStopPublish";//指定用户下麦
+  static const String ROOM_REMOTE_START_PUBLISH =
+      "onRemoteStartPublish"; //指定用户上麦
+  static const String ROOM_GAVE_UP_START_PUBLISH =
+      "onRemoteGaveUpPublish"; //用户放弃上麦
+  static const String ROOM_REMOTE_STOP_PUBLISH = "onRemoteStopPublish"; //指定用户下麦
 
   static const String ROOM_MESSAGE_CHANNEL = "roomMessageChannel"; //房间内消息渠道
   static const String ROOM_SEND_MESSAGE_ERROR = "onSendMessageError"; //发送消息出错
@@ -58,6 +63,7 @@ class Constants {
   static const String SESSION_ID = "sessionId"; //会话id
   static const String ERROR_CODE = "errorCode"; //错误码
   static const String POSITION = "position"; //位置
+  static const String ROLE = "role"; //房主
 
   static const String MESSAGES = "messages"; //消息
   static const String MESSAGE_TYPE = "messageType"; //消息类型

@@ -14,6 +14,8 @@ class Constants {
                 const val SEND_MESSAGE = "sendMessage"//房间内发送消息
                 const val OPEN_SPEAKER = "openSpeaker"//打开扬声器
                 const val OPEN_MIC = "openMic"//打开麦克风
+                const val HOUSE_OWNER = "setHouseOwner"//角色
+
                 const val INIT_ROOM_LISTENER = "initRoomListener"//初始化房间回调
                 const val DESTROY_ROOM_LISTENER = "destroyRoomListener"//回收房间回调
                 const val START_PUBLISH = "startPublish"//开启推流
@@ -38,6 +40,7 @@ class Constants {
                 const val SESSION_ID = "sessionId"//会话id
                 const val ERROR_CODE = "errorCode"//错误码
                 const val POSITION = "position"//位置
+                const val ROLE = "role"//房主
 
                 const val MESSAGES = "messages"//消息
                 const val MESSAGE_TYPE = "messageType"//消息类型

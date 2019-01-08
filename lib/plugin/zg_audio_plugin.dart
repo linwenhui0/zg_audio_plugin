@@ -372,6 +372,11 @@ class ZgAudioPlugin {
     await _channel.invokeMethod(Constants.DESTROY_ROOM_LISTENER);
   }
 
+  setHouseOwner(bool houseOwner) async {
+    await _channel
+        .invokeMethod(Constants.HOUSE_OWNER, {Constants.ROLE: houseOwner});
+  }
+
   Future<bool> startPublish(int position) async {
     return await _channel
         .invokeMethod(Constants.START_PUBLISH, {Constants.POSITION: position});

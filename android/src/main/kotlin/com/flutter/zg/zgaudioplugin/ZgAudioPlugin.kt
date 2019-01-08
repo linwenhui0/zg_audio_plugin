@@ -219,6 +219,7 @@ class ZgAudioPlugin : MethodCallHandler {
 
             }
             HOUSE_OWNER -> {
+                Logger.getInstance().defaultTagD("HOUSE_OWNER")
                 val role: Boolean? = call.argument(ROLE)
                 voiceAccessor.setRole(role!!)
             }

@@ -63,14 +63,12 @@ class _MyAppState extends State<MyApp>
               },
               child: new Text("注销"),
             ),
+
             RaisedButton(
               onPressed: () {
+                zgAudioPlugin.setHouseOwner(true);
               },
-              child: new Text("登录房间"),
-            ),
-            RaisedButton(
-              onPressed: () {},
-              child: new Text(""),
+              child: new Text("设置为房主"),
             ),
             new Text(textBuffer.toString())
           ],

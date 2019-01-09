@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/services.dart';
 import 'package:zg_audio_plugin/model/room_message.dart';
-import 'package:zg_audio_plugin/model/user.dart';
 import 'package:zg_audio_plugin/plugin/zg_audio_plugin.dart';
 
 void main() => runApp(MyApp());
@@ -22,6 +18,7 @@ class _MyAppState extends State<MyApp>
   void initState() {
     super.initState();
     zgAudioPlugin = ZgAudioPlugin();
+    zgAudioPlugin.initRoomListener();
     zgAudioPlugin.registerLoginCallback(this);
     zgAudioPlugin.registerRoomCallback(this);
     zgAudioPlugin.registerRoomMessageCallback(this);
@@ -53,7 +50,7 @@ class _MyAppState extends State<MyApp>
             ),
             RaisedButton(
               onPressed: () {
-                zgAudioPlugin.login("10", "房间10");
+                zgAudioPlugin.login("4", "4");
               },
               child: new Text("登录"),
             ),
@@ -77,12 +74,7 @@ class _MyAppState extends State<MyApp>
     );
   }
 
-  @override
-  void onAddUser(User user) {
-    this.setState(() {
-      textBuffer.write("onAddUser user($user)");
-    });
-  }
+
 
   @override
   void onDisconnect(int errorCode, String roomId) {
@@ -112,27 +104,14 @@ class _MyAppState extends State<MyApp>
     });
   }
 
-  @override
-  void onPullerStreamUpdate(
-      String userId, String streamId, bool mic, bool speaker, int micLocation) {
-    this.setState(() {
-      textBuffer.write("onPullerStreamUpdate userId($userId) streamId($streamId) mic($mic) speaker($speaker) micLocation($micLocation)");
-    });
-  }
 
   @override
   void onReceiveMessage(String roomId, List<RoomMessage> roomMessages) {
     this.setState(() {
-      textBuffer.write("onReceiveMessage");
+      textBuffer.write("onReceiveMessage $roomMessages\n");
     });
   }
 
-  @override
-  void onRemoveUser(String userId) {
-    this.setState(() {
-      textBuffer.write("onRemoveUser userId($userId)");
-    });
-  }
 
   @override
   void onSendMessageError(int errorCode, String roomId, String sessionId) {
@@ -148,31 +127,4 @@ class _MyAppState extends State<MyApp>
     });
   }
 
-  @override
-  void onSoundLevel(String streamId, int soundLevel) {
-    this.setState(() {
-      textBuffer.write("onSoundLevel streamId($streamId)");
-    });
-  }
-
-  @override
-  void onStreamAdd(User user) {
-    this.setState(() {
-      textBuffer.write("onStreamAdd user($user)");
-    });
-  }
-
-  @override
-  void onStreamRemove(String userId) {
-    this.setState(() {
-      textBuffer.write("onStreamRemove userId($userId)");
-    });
-  }
-
-  @override
-  void onStreamUpdate(String userId, bool mic, bool speaker, int micLocation) {
-    this.setState(() {
-      textBuffer.write("onStreamUpdate userId($userId)");
-    });
-  }
 }

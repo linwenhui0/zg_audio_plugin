@@ -233,7 +233,7 @@ class ZgAudioPlugin {
         if (_roomMessageCallbacks != null) {
           var resultData = jsonResult[Constants.RESULT_DATA];
           var roomId = resultData[Constants.ROOM_ID];
-          List messageData = jsonResult[Constants.MESSAGES];
+          List messageData = resultData[Constants.MESSAGES];
           List<RoomMessage> roomMessages = List();
           messageData.forEach((item) {
             roomMessages.add(RoomMessage(

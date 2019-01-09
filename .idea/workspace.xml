@@ -23,8 +23,13 @@
   <component name="ChangeListManager">
     <list default="true" id="627de969-77f4-4419-9ddc-cd8af3c5c7e6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/flutter/zg/zgaudioplugin/ZgAudioPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/flutter/zg/zgaudioplugin/ZgAudioPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.gradle/4.10.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.gradle/4.10.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.gradle/4.10.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.gradle/4.10.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.gradle/4.10.2/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.gradle/4.10.2/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.gradle/4.10.2/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.gradle/4.10.2/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/plugin/zg_audio_plugin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/plugin/zg_audio_plugin.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -44,23 +49,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ZgAudioPlugin.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/android/src/main/kotlin/com/flutter/zg/zgaudioplugin/ZgAudioPlugin.kt">
+      <file leaf-file-name="zg_audio_plugin.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/plugin/zg_audio_plugin.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="192" column="38" lean-forward="true" selection-start-line="192" selection-start-column="38" selection-end-line="192" selection-end-column="38" />
+            <state relative-caret-position="116">
+              <caret line="233" column="24" selection-start-line="233" selection-start-column="14" selection-end-line="233" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+                <element signature="e#16541#16591#0" />
+                <element signature="e#16622#16725#0" />
+                <element signature="e#16760#16829#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="zg_audio_plugin.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/plugin/zg_audio_plugin.dart">
+      <file leaf-file-name="room_message.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/model/room_message.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="376" column="57" lean-forward="true" selection-start-line="376" selection-start-column="57" selection-end-line="376" selection-end-column="57" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -68,8 +76,8 @@
       <file leaf-file-name="main.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="79" selection-start-line="79" selection-end-line="84" selection-end-column="3" />
+            <state relative-caret-position="323">
+              <caret line="110" column="54" selection-start-line="110" selection-start-column="54" selection-end-line="110" selection-end-column="54" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -80,8 +88,8 @@
       <file leaf-file-name="constants.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/constants/constants.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="56" column="48" lean-forward="true" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+            <state relative-caret-position="840">
+              <caret line="56" column="48" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -123,6 +131,9 @@
       <find>ROOM_LOCK_MIC</find>
       <find>lockPosition</find>
       <find>LOCK_POSITION</find>
+      <find>RoomStreamHandler</find>
+      <find>onReceiveMessage</find>
+      <find>onRe</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -148,8 +159,8 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="48" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="367" />
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="709" />
@@ -159,17 +170,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="zg_audio_plugin" type="b2602c69:ProjectViewProjectNode" />
               <item name="zg_audio_plugin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zg_audio_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zg_audio_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="android" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="zg_audio_plugin" type="b2602c69:ProjectViewProjectNode" />
@@ -203,9 +210,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -296,7 +302,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="48" y="23" width="1280" height="709" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="709" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />
@@ -309,8 +315,8 @@
       <window_info id="Designer" order="0" />
       <window_info anchor="right" id="AdbCommander" order="5" side_tool="true" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.39739415" />
       <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.39739415" />
       <window_info anchor="bottom" id="TODO" order="12" />
       <window_info anchor="right" id="Palette&#9;" order="9" />
       <window_info id="Image Layers" order="7" />
@@ -642,13 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/room_message.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/flutter/bin/cache/pkg/sky_engine/lib/convert/json.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -665,15 +664,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/constants/constants.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="56" column="48" lean-forward="true" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+        <state relative-caret-position="840">
+          <caret line="56" column="48" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/src/main/kotlin/com/flutter/zg/zgaudioplugin/ZgAudioPlugin.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="182" column="59" selection-start-line="182" selection-start-column="52" selection-end-line="182" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/room_message.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="79" selection-start-line="79" selection-end-line="84" selection-end-column="3" />
+        <state relative-caret-position="323">
+          <caret line="110" column="54" selection-start-line="110" selection-start-column="54" selection-end-line="110" selection-end-column="54" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -682,18 +695,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/plugin/zg_audio_plugin.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="376" column="57" lean-forward="true" selection-start-line="376" selection-start-column="57" selection-end-line="376" selection-end-column="57" />
+        <state relative-caret-position="116">
+          <caret line="233" column="24" selection-start-line="233" selection-start-column="14" selection-end-line="233" selection-end-column="24" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#16541#16591#0" />
+            <element signature="e#16622#16725#0" />
+            <element signature="e#16760#16829#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android/src/main/kotlin/com/flutter/zg/zgaudioplugin/ZgAudioPlugin.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="192" column="38" lean-forward="true" selection-start-line="192" selection-start-column="38" selection-end-line="192" selection-end-column="38" />
         </state>
       </provider>
     </entry>

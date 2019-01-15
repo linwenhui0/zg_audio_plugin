@@ -41,7 +41,7 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
 
 
     override fun onRemoteStartPublish(userId: String?, location: Int) {
-        Logger.getInstance().defaultTagD("onRemoteStartPublish userId($userId) location($location)")
+        Logger.getInstance().defaultTagW("onRemoteStartPublish userId($userId) location($location)")
         val resultData = JSONObject()
         resultData.put(POSITION, location)
         resultData.put(USER_ID,userId)
@@ -49,42 +49,42 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
     }
 
     override fun onRemoteStopPublish(userId: String?) {
-        Logger.getInstance().defaultTagD("onRemoteStopPublish userId($userId)")
+        Logger.getInstance().defaultTagW("onRemoteStopPublish userId($userId)")
         val resultData = JSONObject()
         resultData.put(USER_ID,userId)
         setResultData(ROOM_REMOTE_STOP_PUBLISH, resultData)
     }
 
     override fun onRemoteGaveUpPublish(userId: String?) {
-        Logger.getInstance().defaultTagD("onRemoteGaveUpPublish userId($userId)")
+        Logger.getInstance().defaultTagW("onRemoteGaveUpPublish userId($userId)")
         val resultData = JSONObject()
         resultData.put(USER_ID,userId)
         setResultData(ROOM_GAVE_UP_START_PUBLISH, resultData)
     }
 
     override fun onMicLockPosition(location: Int) {
-        Logger.getInstance().defaultTagD("onMicLockPosition location($location)")
+        Logger.getInstance().defaultTagW("onMicLockPosition location($location)")
         val resultData = JSONObject()
         resultData.put(POSITION, location)
         setResultData(ROOM_LOCK_MIC, resultData)
     }
 
     override fun onMicUnLockPosition(location: Int) {
-        Logger.getInstance().defaultTagD("onMicUnLockPosition location($location)")
+        Logger.getInstance().defaultTagW("onMicUnLockPosition location($location)")
         val resultData = JSONObject()
         resultData.put(POSITION, location)
         setResultData(ROOM_UNLOCK_MIC, resultData)
     }
 
     override fun onLockPosition(location: Int) {
-        Logger.getInstance().defaultTagD("onLockPosition location($location)")
+        Logger.getInstance().defaultTagW("onLockPosition location($location)")
         val resultData = JSONObject()
         resultData.put(POSITION, location)
         setResultData(ROOM_LOCK_POSITION, resultData)
     }
 
     override fun onUnLockPostion(location: Int) {
-        Logger.getInstance().defaultTagD("onUnLockPosition location($location)")
+        Logger.getInstance().defaultTagW("onUnLockPosition location($location)")
         val resultData = JSONObject()
         resultData.put(POSITION, location)
         setResultData(ROOM_UNLOCK_POSITION, resultData)
@@ -102,7 +102,7 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
     }
 
     override fun onPullerStreamUpdate(userId: String?, streamId: String?, mic: Boolean, speaker: Boolean, micLocation: Int) {
-        Logger.getInstance().defaultTagD("onPullerStreamUpdate userId($userId) streamId($streamId) mic($mic) speaker($speaker) micLocation($micLocation)")
+        Logger.getInstance().defaultTagW("onPullerStreamUpdate userId($userId) streamId($streamId) mic($mic) speaker($speaker) micLocation($micLocation)")
         val resultData = JSONObject()
         resultData.put(USER_ID, userId)
         resultData.put(STREAM_ID, streamId)
@@ -113,7 +113,7 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
     }
 
     override fun onStreamUpdate(userId: String?, mic: Boolean, speaker: Boolean, micLocation: Int) {
-        Logger.getInstance().defaultTagD("onStreamUpdate userId($userId) mic($mic) speaker($speaker) micLocation($micLocation)")
+        Logger.getInstance().defaultTagW("onStreamUpdate userId($userId) mic($mic) speaker($speaker) micLocation($micLocation)")
         val resultData = JSONObject()
         resultData.put(USER_ID, userId)
         resultData.put(ENABLE_MIC, mic)
@@ -123,7 +123,7 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
     }
 
     override fun onStreamAdd(user: User) {
-        Logger.getInstance().defaultTagD("onStreamAdd = user(", user, ")")
+        Logger.getInstance().defaultTagW("onStreamAdd = user(", user, ")")
         val resultData = JSONObject()
         resultData.put(USER_ID, user.userId)
         resultData.put(USER_NAME, user.userName)
@@ -135,7 +135,7 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
     }
 
     override fun onStreamRemove(userId: String?) {
-        Logger.getInstance().defaultTagD("onStreamRemove = userId(", userId, ")")
+        Logger.getInstance().defaultTagW("onStreamRemove = userId(", userId, ")")
         val resultData = JSONObject()
         resultData.put(USER_ID, userId)
         setResultData(ROOM_STREAM_REMOVE, resultData)
@@ -143,7 +143,7 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
 
 
     override fun onAddUser(user: User) {
-        Logger.getInstance().defaultTagD("onAddUser = user(", user, ")")
+        Logger.getInstance().defaultTagW("onAddUser = user(", user, ")")
         val resultData = JSONObject()
         resultData.put(USER_ID, user.userId)
         resultData.put(USER_NAME, user.userName)
@@ -155,7 +155,7 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
     }
 
     override fun onRemoveUser(userId: String?) {
-        Logger.getInstance().defaultTagD("onRemoveUser userId($userId)")
+        Logger.getInstance().defaultTagW("onRemoveUser userId($userId)")
         val resultData = JSONObject()
         resultData.put(USER_ID, userId)
         setResultData(ROOM_REMOVE_USER, resultData)
@@ -167,7 +167,7 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
     }
 
     override fun onDisconnect(errorCode: Int, roomId: String?) {
-        Logger.getInstance().defaultTagD("onDisconnect errorCode($errorCode) roomId($roomId)")
+        Logger.getInstance().defaultTagW("onDisconnect errorCode($errorCode) roomId($roomId)")
         val resultData = JSONObject()
         resultData.put(ERROR_CODE, errorCode)
         resultData.put(ROOM_ID, roomId)
@@ -175,7 +175,7 @@ class RoomHandler : DefaultStreamHandler(), IRoomCallback, IStreamCallback, IPul
     }
 
     override fun onKickOut(errorCode: Int, roomId: String?) {
-        Logger.getInstance().defaultTagD("onKickOut errorCode($errorCode) roomId($roomId)")
+        Logger.getInstance().defaultTagW("onKickOut errorCode($errorCode) roomId($roomId)")
         val resultData = JSONObject()
         resultData.put(ERROR_CODE, errorCode)
         resultData.put(ROOM_ID, roomId)

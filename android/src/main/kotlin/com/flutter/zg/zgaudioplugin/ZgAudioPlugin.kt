@@ -101,7 +101,7 @@ class ZgAudioPlugin : MethodCallHandler {
             INIT_SDK -> {
                 val userId: String? = call.argument(USER_ID)
                 val userName: String? = call.argument(USER_NAME)
-                Logger.getInstance().defaultTagD(" 初始化即构sdk , userId = ", userId, " , userName = ", userName)
+                Logger.getInstance().defaultTagW(" 初始化即构sdk , userId = ", userId, " , userName = ", userName)
                 voiceAccessor.initSDK(userId, userName)
                 voiceAccessor.setPullerCallback(roomHandler)
                 result.success(true)
@@ -110,13 +110,13 @@ class ZgAudioPlugin : MethodCallHandler {
                 this.result = result
                 val roomId: String? = call.argument(ROOM_ID)
                 val roomName: String? = call.argument(ROOM_NAME)
-                Logger.getInstance().defaultTagD("即构sdk登录，房间号：", roomId, "房间名：", roomName)
+                Logger.getInstance().defaultTagW("即构sdk登录，房间号：", roomId, "房间名：", roomName)
                 voiceAccessor.registerLoginCallback(loginEventHandler)
                 voiceAccessor.login(roomId, roomName)
                 result.success(true)
             }
             LOGOUT -> {
-                Logger.getInstance().defaultTagD("即构sdk注销")
+                Logger.getInstance().defaultTagW("即构sdk注销")
                 voiceAccessor.unRegisterLoginCallback(loginEventHandler)
                 result.success(voiceAccessor.logout())
             }
